@@ -10,5 +10,6 @@ Below is a list of packages that were used.
 
 - Vue.js
 - FastAPI
-
-
+- "uvicorn[standard]"
+- pandas
+- sklearn

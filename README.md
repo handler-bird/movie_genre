@@ -13,3 +13,5 @@ Below is a list of packages that were used.
 - "uvicorn[standard]"
 - pandas
 - sklearn
+- tensorflow
+- keras

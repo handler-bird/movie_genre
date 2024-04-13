@@ -8,13 +8,18 @@ defineProps({
   }
 })
 
-const input = ref([])
+const input = ref('')
 
 const accessBackend = () => {
+  console.log(input.value)
+  if (input.value === '') {
+    alert('Please give a description');
+  } else {
+
   const data = {
     'description': input.value
   }
-  fetch('http://127.0.0.1:8000/prediction/', {
+  fetch('http://127.0.0.1/prediction/', {
     method: 'POST',
     headers: {
         "Content-Type": "application/json",
@@ -28,6 +33,7 @@ const accessBackend = () => {
     .catch(error => {
       console.error('Error:', error);
     });
+  }
 }
 
 </script>
@@ -71,6 +77,7 @@ const accessBackend = () => {
   }
 
   .button {
+    margin-top: 15px;
     border-radius: 15px;
     padding: 10px;
     background-color: #00bd7e;

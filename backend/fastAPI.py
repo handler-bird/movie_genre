@@ -2,6 +2,9 @@ from typing import Union
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from transformers import pipeline
+
+classifier = pipeline("text-classification", model="handler-bird/movie_genre_multi_classification")
 
 
 class ModelInput(BaseModel):
@@ -33,4 +36,5 @@ def read_root():
 
 @app.post("/prediction/")
 async def create_prediction(prediction: ModelInput):
-    return {'message': f'The prediction to your description: "{prediction.description}" is ...'}
+    output = classifier(prediction.description)
+    return output[0]['label']

@@ -9,6 +9,7 @@ defineProps({
 })
 
 const input = ref('')
+const output = ref('')
 
 const accessBackend = () => {
   console.log(input.value)
@@ -19,7 +20,7 @@ const accessBackend = () => {
   const data = {
     'description': input.value
   }
-  fetch('http://127.0.0.1/prediction/', {
+  fetch('http://20.113.42.41/prediction/', {
     method: 'POST',
     headers: {
         "Content-Type": "application/json",
@@ -28,7 +29,7 @@ const accessBackend = () => {
   })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      output.value = data['message'];
     })
     .catch(error => {
       console.error('Error:', error);
@@ -50,7 +51,7 @@ const accessBackend = () => {
       </div>
       <div class="result">
         <h1 class="green">Your movie is</h1>
-        <div>Drama</div>
+        <div>{{ output }}</div>
       </div>
     </div>
   </div>

@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/handler-bird/movie_genre_multi_classification"
-headers = {"Authorization": "Bearer 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"}
+headers = {"Authorization": "Bearer Token"}
 
 
 def query(payload):

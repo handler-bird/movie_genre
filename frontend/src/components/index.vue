@@ -19,7 +19,7 @@ const accessBackend = () => {
     'description': input.value
     }
 
-    fetch('http://98.67.135.105/prediction/', {
+    fetch('http://98.67.228.168/prediction/', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json",

@@ -12,21 +12,20 @@ const input = ref('In a post-apocalyptic world where humanity teeters on the bri
 const output = ref('')
 
 const accessBackend = () => {
-  console.log(input.value)
   if (input.value === '') {
     alert('Please give a description');
   } else {
-
-  const data = {
+    const data = {
     'description': input.value
-  }
-  fetch('http://98.67.146.185/prediction/', {
-    method: 'POST',
-    headers: {
+    }
+
+    fetch('http://98.67.135.105/prediction/', {
+      method: 'POST',
+      headers: {
         "Content-Type": "application/json",
       },
-    body: JSON.stringify(data),
-  })
+      body: JSON.stringify(data),
+    })
     .then(response => response.json())
     .then(data => {
       console.log(data);

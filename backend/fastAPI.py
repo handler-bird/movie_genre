@@ -5,7 +5,7 @@ from pydantic import BaseModel
 import requests
 
 API_URL = "https://api-inference.huggingface.co/models/handler-bird/movie_genre_multi_classification"
-headers = {"Authorization": "Bearer Token"}
+headers = {"Authorization": "Bearer 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"}
 
 
 def query(payload):
@@ -20,10 +20,7 @@ class ModelInput(BaseModel):
 app = FastAPI()
 
 origins = [
-    "http://localhost",
-    "http://localhost:5173",
-    "http://localhost:5173/movie_genre/",
-    "https://handler-bird.github.io/movie_genre/",
+   "*"
 ]
 
 # allows cross-origin access

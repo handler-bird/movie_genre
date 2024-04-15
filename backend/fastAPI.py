@@ -2,9 +2,15 @@ from typing import Union
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from transformers import pipeline
+import requests
 
-classifier = pipeline("text-classification", model="handler-bird/movie_genre_multi_classification")
+API_URL = "https://api-inference.huggingface.co/models/handler-bird/movie_genre_multi_classification"
+headers = {"Authorization": "Bearer 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"}
+
+
+def query(payload):
+    response = requests.post(API_URL, headers=headers, json=payload)
+    return response.json()
 
 
 class ModelInput(BaseModel):
@@ -16,6 +22,8 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:5173",
+    "http://localhost:5173/movie_genre/",
+    "https://handler-bird.github.io/movie_genre/",
 ]
 
 # allows cross-origin access
@@ -36,5 +44,7 @@ def read_root():
 
 @app.post("/prediction/")
 async def create_prediction(prediction: ModelInput):
-    output = classifier(prediction.description)
-    return output[0]['label']
+    output = query({
+        "inputs": prediction.description,
+    })
+    return output[0][0]['label']

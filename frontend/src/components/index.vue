@@ -20,8 +20,7 @@ const accessBackend = () => {
   const data = {
     'description': input.value
   }
-  // http://127.0.0.1:8000 http://20.113.42.41
-  fetch('http://127.0.0.1:8000/prediction/', {
+  fetch('http://98.67.146.185/prediction/', {
     method: 'POST',
     headers: {
         "Content-Type": "application/json",
@@ -30,7 +29,8 @@ const accessBackend = () => {
   })
     .then(response => response.json())
     .then(data => {
-      output.value =  data;
+      console.log(data);
+      output.value = data;
     })
     .catch(error => {
       console.error('Error:', error);

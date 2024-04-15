@@ -1,17 +1,18 @@
 # Movie Genre Classification
 
-The aim of this project is to classify movie genres. As an input the model will get the movie description. This project uses the IMDB Movies Dataset from Kaggle
+The aim of this project is to classify movie genres. As an input the model will get the movie description. This project uses the IMDB Movies Dataset from Hugging Face
 
-https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows
+https://huggingface.co/datasets/adrienheymans/imdb-movie-genres
+# Tools & Frameworks
 
-# Packages
-
-Below is a list of packages that were used.
+Below is a list of Tools and Frameworks that were used.
 
 - Vue.js
 - FastAPI
 - "uvicorn[standard]"
-- pandas
-- sklearn
-- tensorflow
-- keras
+- Transformers
+- PyTorch
+- Microsoft Azure
+- Hugging Face
+- GitHub
+
